@@ -75,7 +75,7 @@ class BoostConan(ConanFile):
         "without_type_erasure=False", \
         "without_wave=False"
 
-    url="https://github.com/lasote/conan-boost"
+    url="https://github.com/gasukesu/conan-boost"
     exports = ["FindBoost.cmake", "OriginalFindBoost*"]
     license="Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     short_paths = True
@@ -258,8 +258,8 @@ class BoostConan(ConanFile):
 
         self.copy(pattern="*", dst="include/boost", src="%s/boost" % self.FOLDER_NAME)
         self.copy(pattern="*.a", dst="lib", src="%s/stage/lib" % self.FOLDER_NAME)
-        self.copy(pattern="*.so", dst="lib", src="%s/stage/lib" % self.FOLDER_NAME)
-        self.copy(pattern="*.so.*", dst="lib", src="%s/stage/lib" % self.FOLDER_NAME)
+        self.copy(pattern="*.so", dst="lib", src="%s/stage/lib" % self.FOLDER_NAME, symlinks=True)
+        self.copy(pattern="*.so.*", dst="lib", src="%s/stage/lib" % self.FOLDER_NAME, symlinks=True)
         self.copy(pattern="*.dylib*", dst="lib", src="%s/stage/lib" % self.FOLDER_NAME)
         self.copy(pattern="*.lib", dst="lib", src="%s/stage/lib" % self.FOLDER_NAME)
         self.copy(pattern="*.dll", dst="bin", src="%s/stage/lib" % self.FOLDER_NAME)
